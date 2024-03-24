@@ -2,15 +2,16 @@ import React from "react";
 import { Media } from "../data/media";
 import { durationToString } from "../utils/formatting";
 import { IconButton } from "@mui/material";
-import { FaPlay, FaRegHeart } from "react-icons/fa6";
+import { FaHeart, FaPlay, FaRegHeart } from "react-icons/fa6";
 import { IoPlayOutline } from "react-icons/io5";
 import { PiPlayBold } from "react-icons/pi";
 
 type Props = {
   media: Media;
+  toggleLike: (id: string) => void;
 };
 
-const MediaCard = ({ media }: Props) => {
+const MediaCard = ({ media, toggleLike }: Props) => {
   return (
     <div className="media-card">
       <img className="media-img" src={media.imageUrl} />
@@ -26,7 +27,19 @@ const MediaCard = ({ media }: Props) => {
               <PiPlayBold />
             </IconButton>
             <IconButton>
-              <FaRegHeart />
+              {media.favorited ? (
+                <FaHeart
+                  onClick={() => {
+                    toggleLike(media.id);
+                  }}
+                />
+              ) : (
+                <FaRegHeart
+                  onClick={() => {
+                    toggleLike(media.id);
+                  }}
+                />
+              )}
             </IconButton>
           </div>
         </div>

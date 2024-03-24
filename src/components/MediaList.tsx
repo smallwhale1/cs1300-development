@@ -1,14 +1,17 @@
 import React from "react";
-import { mediaList } from "../data/media";
+import { Media, mediaList } from "../data/media";
 import MediaCard from "./MediaCard";
 
-type Props = {};
+type Props = {
+  mediaList: Media[];
+  toggleLike: (id: string) => void;
+};
 
-const MediaList = (props: Props) => {
+const MediaList = ({ mediaList, toggleLike }: Props) => {
   return (
     <div className="media-list">
       {mediaList.map((media) => (
-        <MediaCard key={media.id} media={media} />
+        <MediaCard key={media.id} media={media} toggleLike={toggleLike} />
       ))}
     </div>
   );
