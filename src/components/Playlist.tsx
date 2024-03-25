@@ -20,6 +20,10 @@ const Playlist = ({ mediaList, toggleLike }: Props) => {
 
     const minutes = Math.floor(totalS / 60);
     const seconds = totalS % 60;
+
+    if (Math.floor(seconds / 10) === 0) {
+      return `${minutes}:0${seconds}`;
+    }
     return `${minutes}:${seconds}`;
   };
   return (
@@ -34,22 +38,31 @@ const Playlist = ({ mediaList, toggleLike }: Props) => {
           Episodes • {getTotalDuration()} Total
         </div>
       )}
-      <div>Song Tracks</div>
-      <div className="playlist-media">
-        {mediaList
-          .filter((media) => media.type === "track")
-          .map((media) => (
-            <PlaylistCard media={media} />
-          ))}
-      </div>
-      <div>Podcast Episodes</div>
-      <div className="playlist-media">
-        {mediaList
-          .filter((media) => media.type === "episode")
-          .map((media) => (
-            <PlaylistCard media={media} />
-          ))}
-      </div>
+      {mediaList.filter((media) => media.type === "track").length > 0 && (
+        <>
+          {" "}
+          <div>Song Tracks</div>
+          <div className="playlist-media">
+            {mediaList
+              .filter((media) => media.type === "track")
+              .map((media) => (
+                <PlaylistCard media={media} />
+              ))}
+          </div>{" "}
+        </>
+      )}
+      {mediaList.filter((media) => media.type === "episode").length > 0 && (
+        <>
+          <div>Podcast Episodes</div>
+          <div className="playlist-media">
+            {mediaList
+              .filter((media) => media.type === "episode")
+              .map((media) => (
+                <PlaylistCard media={media} />
+              ))}
+          </div>{" "}
+        </>
+      )}
     </div>
   );
 };

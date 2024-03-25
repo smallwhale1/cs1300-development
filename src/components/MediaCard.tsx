@@ -26,20 +26,12 @@ const MediaCard = ({ media, toggleLike }: Props) => {
             <IconButton>
               <PiPlayBold />
             </IconButton>
-            <IconButton>
-              {media.favorited ? (
-                <FaHeart
-                  onClick={() => {
-                    toggleLike(media.id);
-                  }}
-                />
-              ) : (
-                <FaRegHeart
-                  onClick={() => {
-                    toggleLike(media.id);
-                  }}
-                />
-              )}
+            <IconButton
+              onClick={() => {
+                toggleLike(media.id);
+              }}
+            >
+              {media.favorited ? <FaHeart color="#f88d8d" /> : <FaRegHeart />}
             </IconButton>
           </div>
         </div>

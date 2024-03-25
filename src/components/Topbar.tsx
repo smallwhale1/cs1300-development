@@ -1,6 +1,5 @@
 import React from "react";
-import { IoPlayCircle } from "react-icons/io5";
-import { FaRegCirclePlay } from "react-icons/fa6";
+import { LuListMusic } from "react-icons/lu";
 
 type Props = {};
 
@@ -8,7 +7,7 @@ const Topbar = (props: Props) => {
   return (
     <nav>
       <h2 className="logo">
-        <FaRegCirclePlay /> Playlist Creator
+        <LuListMusic /> Playlist Creator
       </h2>
     </nav>
   );
