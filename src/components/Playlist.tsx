@@ -2,6 +2,7 @@ import React from "react";
 import { FaRegHeart } from "react-icons/fa6";
 import { Media } from "../data/media";
 import PlaylistCard from "./PlaylistCard";
+import { durationToString } from "../utils/formatting";
 
 type Props = {
   mediaList: Media[];
@@ -16,15 +17,7 @@ const Playlist = ({ mediaList, toggleLike }: Props) => {
       totalMs += media.duration;
     });
 
-    const totalS = Math.floor(totalMs / 1000);
-
-    const minutes = Math.floor(totalS / 60);
-    const seconds = totalS % 60;
-
-    if (Math.floor(seconds / 10) === 0) {
-      return `${minutes}:0${seconds}`;
-    }
-    return `${minutes}:${seconds}`;
+    return durationToString(totalMs);
   };
   return (
     <div className="playlist">

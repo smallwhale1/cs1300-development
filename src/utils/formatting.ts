@@ -1,7 +1,13 @@
-export const durationToString = (duration: number) => {
-  const durationSeconds = Math.floor(duration / 1000);
-  const minutes = Math.floor(durationSeconds / 60);
-  const seconds = durationSeconds % 60;
+/**
+ *
+ * @param totalMs duration in ms
+ * @returns stringified version in mm:ss format
+ */
+export const durationToString = (totalMs: number) => {
+  const totalS = Math.floor(totalMs / 1000);
+
+  const minutes = Math.floor(totalS / 60);
+  const seconds = totalS % 60;
 
   if (Math.floor(seconds / 10) === 0) {
     return `${minutes}:0${seconds}`;

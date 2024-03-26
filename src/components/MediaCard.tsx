@@ -14,7 +14,10 @@ type Props = {
 const MediaCard = ({ media, toggleLike }: Props) => {
   return (
     <div className="media-card">
-      <img className="media-img" src={media.imageUrl} />
+      <div className="media-img-wrapper">
+        <img className="media-img" src={media.imageUrl} />
+        <p className="media-genre">{media.genre}</p>
+      </div>
       <div className="media-text">
         <h3>{media.name}</h3>
         <p>

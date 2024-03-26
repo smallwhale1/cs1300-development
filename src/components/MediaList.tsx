@@ -24,18 +24,27 @@ enum MediaFilter {
 
 const MediaList = ({ mediaList, toggleLike }: Props) => {
   const [mediaFilter, setMediaFilter] = useState(MediaFilter.ALL);
-  const [sortType, setSortType] = useState<string>("");
+  const [mediaGenreFilter, setMediaGenreFilter] = useState("all");
+  const [sortType, setSortType] = useState<string>("none");
 
   const clearFilters = () => {
     setMediaFilter(MediaFilter.ALL);
-    setSortType("");
+    setMediaGenreFilter("all");
+    setSortType("none");
   };
 
   const getFilteredList = () => {
-    if (mediaFilter === MediaFilter.ALL) {
-      return mediaList;
+    let filteredList = [...mediaList];
+    if (mediaFilter !== MediaFilter.ALL) {
+      filteredList = filteredList.filter((media) => media.type === mediaFilter);
     }
-    return mediaList.filter((media) => media.type === mediaFilter);
+    if (mediaGenreFilter !== "all") {
+      filteredList = filteredList.filter(
+        (media) => media.genre === mediaGenreFilter
+      );
+    }
+
+    return filteredList;
   };
 
   const getSortedList = (toSort: Media[]) => {
@@ -61,10 +70,6 @@ const MediaList = ({ mediaList, toggleLike }: Props) => {
     <div className="media-area">
       <div className="media-nav">
         <h3>Browse Songs and Podcasts</h3>
-        {/* Move to theme */}
-        {/* <Button style={{ color: "#505050", display: "flex", gap: "0.5rem" }}>
-          show filters <IoFilter />
-        </Button> */}
         {/* Duration */}
         <div className="media-filters">
           <FormControl sx={{ minWidth: 150 }}>
@@ -85,32 +90,46 @@ const MediaList = ({ mediaList, toggleLike }: Props) => {
               <MenuItem value={"desc"}>Descending</MenuItem>
             </Select>
           </FormControl>
-          <Select
-            labelId="media-select-label"
-            id="media-select"
-            value={"pop"}
-            label="media-filter"
-            onChange={(e) => {}}
-          >
-            <MenuItem value="all">All</MenuItem>
-            <MenuItem value="pop">Pop</MenuItem>
-            <MenuItem value="classical">Classical</MenuItem>
-            <MenuItem value="news">News</MenuItem>
-          </Select>
-          {/* Type */}
-          <Select
-            labelId="media-select-label"
-            id="media-select"
-            value={mediaFilter}
-            label="media-filter"
-            onChange={(e) => {
-              setMediaFilter(e.target.value as MediaFilter);
-            }}
-          >
-            <MenuItem value={MediaFilter.ALL}>All</MenuItem>
-            <MenuItem value={MediaFilter.TRACK}>Tracks</MenuItem>
-            <MenuItem value={MediaFilter.EPISODE}>Episodes</MenuItem>
-          </Select>
+          {/* Genre */}
+          <FormControl sx={{ minWidth: 100 }}>
+            <InputLabel id="demo-simple-select-helper-label-genre">
+              Genre
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label-genre"
+              id="demo-simple-select-helper-genre"
+              value={mediaGenreFilter}
+              label="Genre"
+              onChange={(e) => {
+                setMediaGenreFilter(e.target.value);
+              }}
+            >
+              <MenuItem value="all">All</MenuItem>
+              <MenuItem value="pop">Pop</MenuItem>
+              <MenuItem value="classical">Classical</MenuItem>
+              <MenuItem value="news">News</MenuItem>
+            </Select>
+          </FormControl>
+
+          {/* Media Type */}
+          <FormControl sx={{ minWidth: 100 }}>
+            <InputLabel id="demo-simple-select-helper-label-media">
+              Media
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label-media"
+              id="demo-simple-select-helper-media"
+              value={mediaFilter}
+              label="Media"
+              onChange={(e) => {
+                setMediaFilter(e.target.value as MediaFilter);
+              }}
+            >
+              <MenuItem value={MediaFilter.ALL}>All</MenuItem>
+              <MenuItem value={MediaFilter.TRACK}>Tracks</MenuItem>
+              <MenuItem value={MediaFilter.EPISODE}>Episodes</MenuItem>
+            </Select>
+          </FormControl>
           <Button variant="outlined" onClick={() => clearFilters()}>
             clear
           </Button>
