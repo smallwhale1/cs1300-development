@@ -24,15 +24,37 @@ enum MediaFilter {
 
 const MediaList = ({ mediaList, toggleLike }: Props) => {
   const [mediaFilter, setMediaFilter] = useState(MediaFilter.ALL);
-  const [sortType, setSortType] = useState<"default" | "asc" | "desc">(
-    "default"
-  );
+  const [sortType, setSortType] = useState<string>("");
+
+  const clearFilters = () => {
+    setMediaFilter(MediaFilter.ALL);
+    setSortType("");
+  };
 
   const getFilteredList = () => {
     if (mediaFilter === MediaFilter.ALL) {
       return mediaList;
     }
     return mediaList.filter((media) => media.type === mediaFilter);
+  };
+
+  const getSortedList = (toSort: Media[]) => {
+    let sortedList = [...toSort];
+    if (sortType === "asc") {
+      sortedList = [...toSort].sort((a, b) => {
+        if (a.duration < b.duration) return -1;
+        else if (b.duration < a.duration) return 1;
+        return 0;
+      });
+    } else if (sortType === "desc") {
+      sortedList = [...toSort].sort((a, b) => {
+        if (a.duration < b.duration) return 1;
+        else if (b.duration < a.duration) return -1;
+        return 0;
+      });
+    }
+
+    return sortedList;
   };
 
   return (
@@ -45,23 +67,24 @@ const MediaList = ({ mediaList, toggleLike }: Props) => {
         </Button> */}
         {/* Duration */}
         <div className="media-filters">
-          <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Sort</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                placeholder="Sort duration..."
-                value={10}
-                label="Sort"
-                onChange={() => {}}
-              >
-                <MenuItem value={10}>Default</MenuItem>
-                <MenuItem value={20}>Duration Asc</MenuItem>
-                <MenuItem value={30}>Duration Desc</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
+          <FormControl sx={{ minWidth: 150 }}>
+            <InputLabel id="demo-simple-select-helper-label">
+              Sort (duration)
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label"
+              id="demo-simple-select-helper"
+              value={sortType}
+              label="Sort (duration)"
+              onChange={(e) => {
+                setSortType(e.target.value);
+              }}
+            >
+              <MenuItem value={"none"}>None</MenuItem>
+              <MenuItem value={"asc"}>Ascending</MenuItem>
+              <MenuItem value={"desc"}>Descending</MenuItem>
+            </Select>
+          </FormControl>
           <Select
             labelId="media-select-label"
             id="media-select"
@@ -88,11 +111,13 @@ const MediaList = ({ mediaList, toggleLike }: Props) => {
             <MenuItem value={MediaFilter.TRACK}>Tracks</MenuItem>
             <MenuItem value={MediaFilter.EPISODE}>Episodes</MenuItem>
           </Select>
-          <Button variant="outlined">clear</Button>
+          <Button variant="outlined" onClick={() => clearFilters()}>
+            clear
+          </Button>
         </div>
       </div>
       <div className="media-list">
-        {getFilteredList().map((media) => (
+        {getSortedList(getFilteredList()).map((media) => (
           <MediaCard key={media.id} media={media} toggleLike={toggleLike} />
         ))}
       </div>
