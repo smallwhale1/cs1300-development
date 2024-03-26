@@ -41,10 +41,27 @@ nav {
   gap: 1rem;
 }
 
-/* Media list */
-.media-list {
+.media-area {
   flex-grow: 1;
   padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.media-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.media-filters {
+  display: flex;
+  gap: 0.5rem;
+}
+/* Media list */
+.media-list {
   /* display: flex;
   flex-wrap: wrap;
   gap: 1rem; */
