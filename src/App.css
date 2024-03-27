@@ -155,12 +155,13 @@ nav {
 }
 
 .playlist-heading {
+  padding: 0.5rem 0;
   font-size: 1rem;
   letter-spacing: 1px;
   text-transform: uppercase;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
 }
 
 .playlist-text {
@@ -197,4 +198,8 @@ nav {
 .playlist-card-text {
   display: flex;
   flex-direction: column;
+}
+
+.playlist-card-icon-btns {
+  display: flex;
 }

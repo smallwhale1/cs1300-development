@@ -3,6 +3,7 @@ import { FaRegHeart } from "react-icons/fa6";
 import { Media } from "../data/media";
 import PlaylistCard from "./PlaylistCard";
 import { durationToString } from "../utils/formatting";
+import { Button } from "@mui/material";
 
 type Props = {
   mediaList: Media[];
@@ -21,7 +22,17 @@ const Playlist = ({ mediaList, toggleLike }: Props) => {
   };
   return (
     <div className="playlist">
-      <h2 className="playlist-heading">Favorites Playlist</h2>
+      <h2 className="playlist-heading">
+        Favorites Playlist
+        <Button
+          size="small"
+          onClick={() => {
+            // set media list to empty
+          }}
+        >
+          clear
+        </Button>
+      </h2>
       {mediaList.length === 0 ? (
         <p className="playlist-text">Nothing here yet!</p>
       ) : (
@@ -39,7 +50,7 @@ const Playlist = ({ mediaList, toggleLike }: Props) => {
             {mediaList
               .filter((media) => media.type === "track")
               .map((media) => (
-                <PlaylistCard media={media} />
+                <PlaylistCard media={media} toggleLike={toggleLike} />
               ))}
           </div>{" "}
         </>
@@ -51,7 +62,7 @@ const Playlist = ({ mediaList, toggleLike }: Props) => {
             {mediaList
               .filter((media) => media.type === "episode")
               .map((media) => (
-                <PlaylistCard media={media} />
+                <PlaylistCard media={media} toggleLike={toggleLike} />
               ))}
           </div>{" "}
         </>

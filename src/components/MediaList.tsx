@@ -131,14 +131,18 @@ const MediaList = ({ mediaList, toggleLike }: Props) => {
             </Select>
           </FormControl>
           <Button variant="outlined" onClick={() => clearFilters()}>
-            clear
+            reset
           </Button>
         </div>
       </div>
       <div className="media-list">
-        {getSortedList(getFilteredList()).map((media) => (
-          <MediaCard key={media.id} media={media} toggleLike={toggleLike} />
-        ))}
+        {getSortedList(getFilteredList()).length > 0 ? (
+          getSortedList(getFilteredList()).map((media) => (
+            <MediaCard key={media.id} media={media} toggleLike={toggleLike} />
+          ))
+        ) : (
+          <p>No Results</p>
+        )}
       </div>
     </div>
   );

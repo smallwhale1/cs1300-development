@@ -3,12 +3,14 @@ import { Media } from "../data/media";
 import { durationToString } from "../utils/formatting";
 import { IconButton } from "@mui/material";
 import { PiPlayBold, PiPlayCircle } from "react-icons/pi";
+import { FaHeart, FaRegHeart } from "react-icons/fa6";
 
 type Props = {
   media: Media;
+  toggleLike: (id: string) => void;
 };
 
-const PlaylistCard = ({ media }: Props) => {
+const PlaylistCard = ({ media, toggleLike }: Props) => {
   return (
     <div className="playlist-card">
       <div className="playlist-card-left">
@@ -20,9 +22,19 @@ const PlaylistCard = ({ media }: Props) => {
           </div>
         </div>
       </div>
-      <IconButton>
-        <PiPlayCircle />
-      </IconButton>
+      <div className="playlist-card-icon-btns">
+        <IconButton size="small">
+          <PiPlayBold />
+        </IconButton>
+        <IconButton
+          size="small"
+          onClick={() => {
+            toggleLike(media.id);
+          }}
+        >
+          <FaHeart color="#f88d8d" />
+        </IconButton>
+      </div>
     </div>
   );
 };
