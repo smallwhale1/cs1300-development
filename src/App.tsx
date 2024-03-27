@@ -20,6 +20,10 @@ function App() {
     );
   };
 
+  const clearPlaylist = () => {
+    setMedia((prev) => prev.map((elem) => ({ ...elem, favorited: false })));
+  };
+
   return (
     <div className="App">
       <Topbar />
@@ -28,6 +32,7 @@ function App() {
         <Playlist
           mediaList={media.filter((m) => m.favorited)}
           toggleLike={toggleLike}
+          clearPlaylist={clearPlaylist}
         />
       </div>
     </div>

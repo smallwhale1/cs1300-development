@@ -16,7 +16,7 @@ const MediaCard = ({ media, toggleLike }: Props) => {
     <div className="media-card">
       <div className="media-img-wrapper">
         <img className="media-img" src={media.imageUrl} />
-        <p className="media-genre">{media.genre}</p>
+        {/* <p className="media-genre">{media.genre}</p> */}
       </div>
       <div className="media-text">
         <h3>{media.name}</h3>
@@ -24,11 +24,14 @@ const MediaCard = ({ media, toggleLike }: Props) => {
           {media.artist} • {durationToString(media.duration)}
         </p>
         <div className="media-footer">
-          <span className="media-type">{media.type}</span>
+          <div className="media-tags">
+            <span className="media-type">{media.type}</span>
+            <span className="media-type">{media.genre}</span>
+          </div>
           <div className="media-icons">
-            <IconButton>
+            {/* <IconButton>
               <PiPlayBold />
-            </IconButton>
+            </IconButton> */}
             <IconButton
               onClick={() => {
                 toggleLike(media.id);

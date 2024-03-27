@@ -7,10 +7,11 @@ import { Button } from "@mui/material";
 
 type Props = {
   mediaList: Media[];
+  clearPlaylist: () => void;
   toggleLike: (id: string) => void;
 };
 
-const Playlist = ({ mediaList, toggleLike }: Props) => {
+const Playlist = ({ mediaList, toggleLike, clearPlaylist }: Props) => {
   const getTotalDuration = () => {
     let totalMs = 0;
 
@@ -24,12 +25,7 @@ const Playlist = ({ mediaList, toggleLike }: Props) => {
     <div className="playlist">
       <h2 className="playlist-heading">
         Favorites Playlist
-        <Button
-          size="small"
-          onClick={() => {
-            // set media list to empty
-          }}
-        >
+        <Button size="small" onClick={clearPlaylist}>
           clear
         </Button>
       </h2>

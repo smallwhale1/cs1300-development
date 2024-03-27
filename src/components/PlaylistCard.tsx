@@ -23,9 +23,9 @@ const PlaylistCard = ({ media, toggleLike }: Props) => {
         </div>
       </div>
       <div className="playlist-card-icon-btns">
-        <IconButton size="small">
+        {/* <IconButton size="small">
           <PiPlayBold />
-        </IconButton>
+        </IconButton> */}
         <IconButton
           size="small"
           onClick={() => {
