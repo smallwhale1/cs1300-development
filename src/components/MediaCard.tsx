@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Media } from "../data/media";
 import { durationToString } from "../utils/formatting";
-import { IconButton } from "@mui/material";
+import { IconButton, Skeleton } from "@mui/material";
 import { FaHeart, FaPlay, FaRegHeart } from "react-icons/fa6";
 import { IoPlayOutline } from "react-icons/io5";
 import { PiPlayBold } from "react-icons/pi";
@@ -12,11 +12,15 @@ type Props = {
 };
 
 const MediaCard = ({ media, toggleLike }: Props) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
   return (
     <div className="media-card">
       <div className="media-img-wrapper">
-        <img className="media-img" src={media.imageUrl} />
-        {/* <p className="media-genre">{media.genre}</p> */}
+        <img
+          onLoad={() => setImgLoaded(true)}
+          className="media-img"
+          src={media.imageUrl}
+        />
       </div>
       <div className="media-text">
         <h3>{media.name}</h3>

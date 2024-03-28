@@ -3,7 +3,7 @@ import { Media } from "../data/media";
 import { durationToString } from "../utils/formatting";
 import { IconButton } from "@mui/material";
 import { PiPlayBold, PiPlayCircle } from "react-icons/pi";
-import { FaHeart, FaRegHeart } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa6";
 
 type Props = {
   media: Media;
