@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { Media, mediaList } from "../data/media";
+import { Media } from "../data/media";
 import MediaCard from "./MediaCard";
 import {
-  Box,
   Button,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
 } from "@mui/material";
-import { IoFilter } from "react-icons/io5";
 
 type Props = {
   mediaList: Media[];
@@ -108,6 +106,7 @@ const MediaList = ({ mediaList, toggleLike }: Props) => {
               <MenuItem value="pop">Pop</MenuItem>
               <MenuItem value="classical">Classical</MenuItem>
               <MenuItem value="news">News</MenuItem>
+              <MenuItem value="tech">Tech</MenuItem>
             </Select>
           </FormControl>
 

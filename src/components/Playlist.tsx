@@ -46,7 +46,11 @@ const Playlist = ({ mediaList, toggleLike, clearPlaylist }: Props) => {
             {mediaList
               .filter((media) => media.type === "track")
               .map((media) => (
-                <PlaylistCard media={media} toggleLike={toggleLike} />
+                <PlaylistCard
+                  key={media.id}
+                  media={media}
+                  toggleLike={toggleLike}
+                />
               ))}
           </div>{" "}
         </>
@@ -58,7 +62,11 @@ const Playlist = ({ mediaList, toggleLike, clearPlaylist }: Props) => {
             {mediaList
               .filter((media) => media.type === "episode")
               .map((media) => (
-                <PlaylistCard media={media} toggleLike={toggleLike} />
+                <PlaylistCard
+                  key={media.id}
+                  media={media}
+                  toggleLike={toggleLike}
+                />
               ))}
           </div>{" "}
         </>

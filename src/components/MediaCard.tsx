@@ -21,7 +21,7 @@ const MediaCard = ({ media, toggleLike }: Props) => {
       <div className="media-text">
         <h3>{media.name}</h3>
         <p>
-          {media.artist} • {durationToString(media.duration)}
+          {media.creator} • {durationToString(media.duration)}
         </p>
         <div className="media-footer">
           <div className="media-tags">
