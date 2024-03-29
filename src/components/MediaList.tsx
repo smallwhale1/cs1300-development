@@ -67,7 +67,7 @@ const MediaList = ({ mediaList, toggleLike }: Props) => {
   return (
     <div className="media-area">
       <div className="media-nav">
-        <h3>Browse Songs and Podcasts</h3>
+        <h2 className="media-header">Browse Songs and Podcasts</h2>
         {/* Duration */}
         <div className="media-filters">
           <FormControl sx={{ minWidth: 150 }}>

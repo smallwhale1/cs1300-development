@@ -6,9 +6,9 @@ type Props = {};
 const Topbar = (props: Props) => {
   return (
     <nav>
-      <h2 className="logo">
+      <h1 className="logo">
         <LuListMusic /> Playlist Creator
-      </h2>
+      </h1>
     </nav>
   );
 };

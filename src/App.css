@@ -55,6 +55,10 @@ nav {
   gap: 1rem;
 }
 
+.media-header {
+  font-size: 20px;
+}
+
 .media-nav {
   display: flex;
   justify-content: space-between;
@@ -138,8 +142,8 @@ nav {
   letter-spacing: 1px;
   font-size: 14px;
   font-weight: 500;
-  border: 1px solid #8a8a8a;
-  color: #8a8a8a;
+  border: 1px solid #737373;
+  color: #737373;
   /* background-color: rgb(252, 248, 242); */
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
@@ -174,7 +178,7 @@ nav {
 }
 
 .playlist-text {
-  color: #7e7e7e;
+  color: #737373;
 }
 
 .playlist-media {

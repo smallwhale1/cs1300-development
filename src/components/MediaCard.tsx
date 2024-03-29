@@ -17,7 +17,7 @@ const MediaCard = ({ media, toggleLike }: Props) => {
     <div className="media-card">
       <div className="media-img-wrapper">
         <img
-          alt="album or podcast cover media"
+          alt={`album or podcast cover media for ${media.name}`}
           onLoad={() => setImgLoaded(true)}
           className="media-img"
           src={media.imageUrl}

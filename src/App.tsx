@@ -5,6 +5,8 @@ import MediaList from "./components/MediaList";
 import Playlist from "./components/Playlist";
 import Topbar from "./components/Topbar";
 import { mediaList } from "./data/media";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "./utils/theme";
 
 function App() {
   const [media, setMedia] = useState(mediaList);
@@ -25,17 +27,19 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Topbar />
-      <div className="main">
-        <MediaList mediaList={media} toggleLike={toggleLike} />
-        <Playlist
-          mediaList={media.filter((m) => m.favorited)}
-          toggleLike={toggleLike}
-          clearPlaylist={clearPlaylist}
-        />
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Topbar />
+        <div className="main">
+          <MediaList mediaList={media} toggleLike={toggleLike} />
+          <Playlist
+            mediaList={media.filter((m) => m.favorited)}
+            toggleLike={toggleLike}
+            clearPlaylist={clearPlaylist}
+          />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
