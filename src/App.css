@@ -86,7 +86,7 @@ nav {
   gap: 1rem;
   padding: 1rem;
   border-radius: 0.5rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: 0.2s ease;
 }
 
@@ -211,6 +211,7 @@ nav {
 
 .playlist-card-icon-btns {
   display: flex;
+  padding: 0.5rem;
 }
 
 @media (max-width: 1000px) {
