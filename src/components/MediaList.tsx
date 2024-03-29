@@ -71,10 +71,14 @@ const MediaList = ({ mediaList, toggleLike }: Props) => {
         {/* Duration */}
         <div className="media-filters">
           <FormControl sx={{ minWidth: 150 }}>
-            <InputLabel id="demo-simple-select-helper-label">
+            <InputLabel
+              id="demo-simple-select-helper-label"
+              htmlFor={"input-sort"}
+            >
               Sort (duration)
             </InputLabel>
             <Select
+              inputProps={{ id: "input-sort" }}
               labelId="demo-simple-select-helper-label"
               id="demo-simple-select-helper"
               value={sortType}
@@ -90,10 +94,14 @@ const MediaList = ({ mediaList, toggleLike }: Props) => {
           </FormControl>
           {/* Genre */}
           <FormControl sx={{ minWidth: 100 }}>
-            <InputLabel id="demo-simple-select-helper-label-genre">
+            <InputLabel
+              id="demo-simple-select-helper-label-genre"
+              htmlFor={"input-genre"}
+            >
               Genre
             </InputLabel>
             <Select
+              inputProps={{ id: "input-genre" }}
               labelId="demo-simple-select-helper-label-genre"
               id="demo-simple-select-helper-genre"
               value={mediaGenreFilter}
@@ -109,13 +117,16 @@ const MediaList = ({ mediaList, toggleLike }: Props) => {
               <MenuItem value="tech">Tech</MenuItem>
             </Select>
           </FormControl>
-
           {/* Media Type */}
           <FormControl sx={{ minWidth: 100 }}>
-            <InputLabel id="demo-simple-select-helper-label-media">
+            <InputLabel
+              id="demo-simple-select-helper-label-media"
+              htmlFor={"input-media"}
+            >
               Media
             </InputLabel>
             <Select
+              inputProps={{ id: "input-media" }}
               labelId="demo-simple-select-helper-label-media"
               id="demo-simple-select-helper-media"
               value={mediaFilter}

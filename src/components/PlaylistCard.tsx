@@ -14,7 +14,11 @@ const PlaylistCard = ({ media, toggleLike }: Props) => {
   return (
     <div className="playlist-card">
       <div className="playlist-card-left">
-        <img src={media.imageUrl} className="playlist-card-img" />
+        <img
+          src={media.imageUrl}
+          className="playlist-card-img"
+          alt="album or podcast cover media"
+        />
         <div className="playlist-card-text">
           <h4>{media.name}</h4>
           <div>
