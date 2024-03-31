@@ -1,5 +1,4 @@
 import React from "react";
-import { FaRegHeart } from "react-icons/fa6";
 import { Media } from "../data/media";
 import PlaylistCard from "./PlaylistCard";
 import { durationToString } from "../utils/formatting";

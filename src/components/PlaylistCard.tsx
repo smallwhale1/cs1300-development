@@ -27,16 +27,6 @@ const PlaylistCard = ({ media, toggleLike }: Props) => {
         </div>
       </div>
       <div className="playlist-card-icon-btns">
-        {/* <IconButton size="small">
-          <PiPlayBold />
-        </IconButton> */}
-        {/* <IconButton
-          size="small"
-          onClick={() => {
-            toggleLike(media.id);
-          }}
-          aria-label="favorite"
-        > */}
         <FaHeart
           style={{ cursor: "pointer" }}
           size={16}
@@ -45,7 +35,6 @@ const PlaylistCard = ({ media, toggleLike }: Props) => {
             toggleLike(media.id);
           }}
         />
-        {/* </IconButton> */}
       </div>
     </div>
   );
