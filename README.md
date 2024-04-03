@@ -3,6 +3,9 @@
 Link to deployed app:
 https://cs1300-development.vercel.app/
 
+Link to hand-in webpage:
+https://smallwhale1.github.io/cs1300-development-handin/
+
 ## How to run locally
 
 In the project directory, run:
