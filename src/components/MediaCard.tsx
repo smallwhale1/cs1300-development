@@ -63,6 +63,7 @@ const MediaCard = ({ media, toggleLike }: Props) => {
             <div className="media-icons">
               {media.favorited ? (
                 <FaHeart
+                  className="heart-icon"
                   size={24}
                   color="#f88d8d"
                   onClick={() => {
@@ -72,6 +73,7 @@ const MediaCard = ({ media, toggleLike }: Props) => {
                 />
               ) : (
                 <FaRegHeart
+                  className="heart-icon"
                   size={24}
                   color="#777777"
                   onClick={() => {

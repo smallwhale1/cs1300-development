@@ -91,6 +91,14 @@ nav {
   scale: 1.02;
 }
 
+.heart-icon {
+  transition: all 0.2s ease;
+}
+
+.heart-icon:hover {
+  scale: 1.1;
+}
+
 .media-img-wrapper {
   position: relative;
   width: 100%;

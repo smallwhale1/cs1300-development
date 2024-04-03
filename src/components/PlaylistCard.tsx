@@ -28,6 +28,7 @@ const PlaylistCard = ({ media, toggleLike }: Props) => {
       </div>
       <div className="playlist-card-icon-btns">
         <FaHeart
+          className="heart-icon"
           style={{ cursor: "pointer" }}
           size={16}
           color="#f88d8d"
